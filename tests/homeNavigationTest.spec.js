@@ -11,4 +11,9 @@ test.describe('Home Navigation', () => {
     const homePage = new HomePage(page);
     await homePage.clickPhoneLink();
   });
+
+  test('should navigate to home page 2', async ({page}) => {
+    const homePage = new HomePage(page);
+    await homePage.clickPhoneLink();
+  });
 }); 
