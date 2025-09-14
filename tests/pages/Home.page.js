@@ -5,12 +5,24 @@ export class HomePage {
   constructor(page) {
     this.page = page;
     this.phoneLink = page.locator('.fa.fa-phone');
-    // this.header = page.locator('header');
-    // this.footer = page.locator('footer');
-    // this.main = page.locator('main');
-    // this.title = page.locator('h1');
-    // this.description = page.locator('p');
-    // this.getStartedLink = page.locator('text=Get Started');
+    this.myAccountDropdown = page.locator('a[title="My Account"] span[class="hidden-xs hidden-sm hidden-md"]');
+    this.registerLink = page.locator('text=Register');
+    this.loginLink = page.locator('text=Login');
+    this.wishListLink = page.locator('a[id="wishlist-total"] span[class="hidden-xs hidden-sm hidden-md"]');
+  }
+
+  // Singleton implementation
+  static #instance;
+
+  /**
+   * Returns the singleton instance for the given page.
+   * @param {import('@playwright/test').Page} page
+   */
+  static getInstance(page) {
+    if (!HomePage.#instance) {
+      HomePage.#instance = new HomePage(page);
+    }
+    return HomePage.#instance;
   }
 
 //   async goto() {

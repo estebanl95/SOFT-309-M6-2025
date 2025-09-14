@@ -2,7 +2,7 @@ import {test} from '@playwright/test';
 import {HomePage} from './pages/Home.page';
 
 test.describe('Home Navigation', () => {
-    test.beforeEach(async ({page}) => {
+    test.beforeAll(async ({page}) => {
         await page.goto('https://tutorialsninja.com/demo/');
   });
 
