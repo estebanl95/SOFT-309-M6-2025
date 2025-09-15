@@ -4,6 +4,7 @@ export class ContactUsPage {
    */
   constructor(page) {
     this.page = page;
+    this.title = page.locator('div[id="content"] h1');
     this.phoneLink = page.locator('.fa.fa-phone');
     this.emailLink = page.locator('.fa.fa-envelope');
     this.contactForm = page.locator('form#contact-form');
@@ -11,6 +12,7 @@ export class ContactUsPage {
     this.emailInput = page.locator('input[name="email"]');
     this.messageTextarea = page.locator('textarea[name="message"]');
     this.submitButton = page.locator('button[type="submit"]');
+    this.homePageLink = page.getByRole('link', { name: 'Qafox.com' });
   }
 
   // Singleton implementation

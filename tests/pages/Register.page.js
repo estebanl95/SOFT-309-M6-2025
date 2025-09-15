@@ -1,6 +1,7 @@
 export class RegisterAccountPage {
   constructor(page) {
     this.page = page;
+    this.homePageLink = page.getByRole('link', { name: 'Qafox.com' });
     this.title = page.locator("div[id='content'] h1");
     this.firstName = page.locator("#input-firstname");
     this.lastName = page.locator("#input-lastname");
@@ -20,14 +21,14 @@ export class RegisterAccountPage {
   static #instance;
 
   static getInstance(page) {
-    if (!AboutUsPage.#instance || AboutUsPage.#instance.page !== page) {
+    if (!RegisterAccountPage.#instance || RegisterAccountPage.#instance.page !== page) {
       // Creates a new instance if it doesn't exist or if it's a different page
-      AboutUsPage.#instance = new AboutUsPage(page);
+      RegisterAccountPage.#instance = new RegisterAccountPage(page);
     }
-    return AboutUsPage.#instance;
+    return RegisterAccountPage.#instance;
   }
 
   static reset() {
-    AboutUsPage.#instance = null;
+    RegisterAccountPage.#instance = null;
   }
 }
