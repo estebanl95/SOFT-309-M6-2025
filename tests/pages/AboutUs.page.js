@@ -2,6 +2,7 @@ export class AboutUsPage {
   constructor(page) {
     this.page = page;
     this.title = page.locator('div[id="content"] h1');
+    this.homePageLink = page.getByRole('link', { name: 'Qafox.com' });
   }
 
   static #instance;
