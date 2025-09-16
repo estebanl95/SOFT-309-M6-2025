@@ -1,9 +1,12 @@
 export class LoginPage {
   constructor(page) {
     this.page = page;
-    this.title = page.locator("div[id='content'] h1");
     this.homePageLink = page.locator('header a[href="https://tutorialsninja.com/demo/index.php?route=common/home"]');
-
+    this.inputEmailAddress = page.locator('#input-email');
+    this.inputPassword = page.locator('#input-password');
+    this.forgottenPasswordLink = page.locator('div[class="form-group"] a');
+    this.loginButton = page.locator('input[value="Login"]');
+    this.warningMessage = page.locator('.alert.alert-danger.alert-dismissible')
   }
 
   static #instance;
@@ -15,6 +18,20 @@ export class LoginPage {
     }
     return LoginPage.#instance;
   }
+
+  async submitLoginwithBlankCredentials() {
+    await this.loginButton.click();
+  }
+
+  async submitIncorrectLogin(email, password) {
+    await this.inputEmailAddress.fill(email);
+    await this.inputPassword.fill(password);
+    await this.loginButton.click();
+  }
+
+
+
+
 
   static reset() {
     LoginPage.#instance = null;

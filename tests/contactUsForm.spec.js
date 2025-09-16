@@ -3,7 +3,6 @@ import { HomePage } from './pages/Home.page';
 import { ContactUsPage } from './pages/ContactUs.page';
 import * as dotenv from 'dotenv';
 
-// Load environment variables from .creds.env file
 dotenv.config({ path: '.creds.env' });
 
 let page;

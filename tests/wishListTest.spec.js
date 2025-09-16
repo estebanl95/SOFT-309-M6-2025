@@ -3,7 +3,6 @@ import { HomePage } from './pages/Home.page';
 
 let page;
 let homePage;
-let wishListPage;
 
 test.describe('Wish List ', () => {
     test.beforeAll(async ({ browser }) => {
