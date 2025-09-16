@@ -12,7 +12,7 @@ export class ContactUsPage {
     this.emailInput = page.locator('input[name="email"]');
     this.messageTextarea = page.locator('textarea[name="message"]');
     this.submitButton = page.locator('button[type="submit"]');
-    this.homePageLink = page.getByRole('link', { name: 'Qafox.com' });
+    this.homePageLink = page.locator('header a[href="https://tutorialsninja.com/demo/index.php?route=common/home"]');
   }
 
   // Singleton implementation

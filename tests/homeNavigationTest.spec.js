@@ -1,4 +1,3 @@
-
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/Home.page';
 import { ContactUsPage } from './pages/ContactUs.page';
@@ -12,9 +11,27 @@ import { TermsConditionsPage } from './pages/TermsConditions.page';
 import { ReturnsPage } from './pages/Returns.page';
 import { SiteMapPage } from './pages/SiteMap.page';
 import { BrandsPage } from './pages/Brands.page';
-import { GiftCertificatePage } from './pages/GiftCertificate';
+import { GiftCertificatePage } from './pages/GiftCertificate.page';
 import { AffiliatesPage } from './pages/Affiliates.page';
 import { SpecialsPage } from './pages/Specials.page';
+import { DesktopPage } from './pages/devicePages/Desktop.page'; 
+import { DesktopMacPage } from './pages/devicePages/DesktopMac.page';
+import { DesktopPCPage } from './pages/devicePages/DesktopPC.page';
+import { LaptopPage } from './pages/devicePages/Laptop.page';
+import { LaptopWindowsPage } from './pages/devicePages/LaptopWindows.page';
+import { LaptopMacPage } from './pages/devicePages/LaptopMac.page';
+import { ComponentsPage } from './pages/devicePages/Components.page';
+import { ComponentsMicePage } from './pages/devicePages/ComponentsMice.page';
+import { ComponentsMonitorPage } from './pages/devicePages/ComponentsMonitor.page';
+import { ComponentsPrinterPage } from './pages/devicePages/ComponentsPrinter.page';
+import { ComponentsScannerPage } from './pages/devicePages/ComponentsScanner.page';
+import { ComponentsWebCameraPage } from './pages/devicePages/ComponentsWebCamera.page';
+import { TabletsPage } from './pages/devicePages/Tablets.page';
+import { SoftwarePage } from './pages/devicePages/Software.page';
+import { PhonesPage } from './pages/devicePages/Phones.page';
+import { CamerasPage } from './pages/devicePages/Cameras.page';
+import { MP3PlayerPage } from './pages/devicePages/MP3Player.page';
+import { MP3PlayerItemPage } from './pages/devicePages/MP3PlayerItem.page';
 
 let page;
 let homePage;
@@ -32,10 +49,27 @@ let brandsPage;
 let giftCertificatePage;
 let affiliatesPage;
 let specialsPage;
+let mp3PlayerItemPage;
+let mp3PlayerPage;
+let desktops;
+let desktopMac;
+let desktopPC;
+let laptops;
+let laptopMac;
+let laptopWindows;
+let components;
+let componentsMice;
+let componentsMonitor;
+let componentsPrinter;
+let componentsScanner;
+let componentsWebCamera;
+let tablets;
+let software;
+let phonePDA;
+let cameras;
 
-test.describe('Home Navigation', () => {
+test.describe('Home Page ', () => {
   test.beforeAll(async ({ browser }) => {
-    // Open a new browser context and page
     const context = await browser.newContext();
     page = await context.newPage();
     await page.goto('https://tutorialsninja.com/demo/');
@@ -54,6 +88,24 @@ test.describe('Home Navigation', () => {
     giftCertificatePage = GiftCertificatePage.getInstance(page);
     affiliatesPage = AffiliatesPage.getInstance(page);
     specialsPage = SpecialsPage.getInstance(page);
+    desktops = DesktopPage.getInstance(page);
+    desktopMac = DesktopMacPage.getInstance(page);
+    desktopPC = DesktopPCPage.getInstance(page);
+    laptops = LaptopPage.getInstance(page);
+    laptopMac = LaptopMacPage.getInstance(page);
+    laptopWindows = LaptopWindowsPage.getInstance(page);
+    components = ComponentsPage.getInstance(page);
+    componentsMice = ComponentsMicePage.getInstance(page);
+    componentsMonitor = ComponentsMonitorPage.getInstance(page);
+    componentsPrinter = ComponentsPrinterPage.getInstance(page);
+    componentsScanner = ComponentsScannerPage.getInstance(page);
+    componentsWebCamera = ComponentsWebCameraPage.getInstance(page);
+    tablets = TabletsPage.getInstance(page);
+    software = SoftwarePage.getInstance(page);
+    phonePDA = PhonesPage.getInstance(page);
+    cameras = CamerasPage.getInstance(page);
+    mp3PlayerPage = MP3PlayerPage.getInstance(page);
+    mp3PlayerItemPage = MP3PlayerItemPage.getInstance(page);
   });
 
   test.beforeEach(async () => {
@@ -73,6 +125,24 @@ test.describe('Home Navigation', () => {
     GiftCertificatePage.reset();
     AffiliatesPage.reset();
     SpecialsPage.reset();
+    DesktopPage.reset();
+    DesktopMacPage.reset();
+    DesktopPCPage.reset();
+    LaptopPage.reset();
+    LaptopMacPage.reset();
+    LaptopWindowsPage.reset();
+    ComponentsPage.reset();
+    ComponentsMicePage.reset();
+    ComponentsMonitorPage.reset();
+    ComponentsPrinterPage.reset();
+    ComponentsScannerPage.reset();
+    ComponentsWebCameraPage.reset();
+    TabletsPage.reset();
+    SoftwarePage.reset();
+    PhonesPage.reset();
+    CamerasPage.reset();
+    MP3PlayerPage.reset();
+    MP3PlayerItemPage.reset();
   });
 
   test('test the navigation of the header links', async () => {
@@ -166,8 +236,100 @@ test.describe('Home Navigation', () => {
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=account/login");
     console.log("Newsletter page displays the Login page, and this is expected behavior because user is not logged in.");
     await loginPage.homePageLink.click();
+  });
+
+  test('test the currency dropdown in the header', async () => {
+    await homePage.selectPoundSterlingCurrency();
+    await expect(homePage.currencySymbol).toHaveText("£");
+    await expect(homePage.cartButton).toContainText("£");
+    console.log("Pound Sterling currency test passed - symbols match in dropdown and cart");
+
+    await homePage.selectEuroCurrency();
+    await expect(homePage.currencySymbol).toHaveText("€");
+    await expect(homePage.cartButton).toContainText("€");
+    console.log("Euro currency test passed - symbols match in dropdown and cart");
+
+    await homePage.selectUsDollarCurrency();
+    await expect(homePage.currencySymbol).toHaveText("$");
+    await expect(homePage.cartButton).toContainText("$");
+    console.log("US Dollar currency test passed - symbols match in dropdown and cart");
+  });
+
+  test('test the functionality of the Navigation menu links', async() => {
+    await homePage.navigateToDesktopsPC();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=20_26");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToDesktopsMac();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=20_27");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToAllDesktops();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=20");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToLaptopsMacs();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=18_46");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToLaptopsWindows();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=18_45");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToAllLaptops();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=18");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToComponentsMiceAndTrackballs();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=25_29");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToComponentsMonitors();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=25_28");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToComponentsPrinters();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=25_30");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToComponentsScanners();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=25_31");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToComponentsWebCameras();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=25_32");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToAllComponents();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=25");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToTablets();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=57");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToSoftware();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=17");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToPhones();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=24");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToCameras();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=33");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToMP3PlayersOption11();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=34_43");
+    await homePage.homePageLink.click();
+
+    await homePage.navigateToAllMP3Players();
+    await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=34");
+    await homePage.homePageLink.click();
 
   });
+
 
   test.afterEach(async () => {
     await page.evaluate(() => localStorage.clear());
@@ -176,4 +338,5 @@ test.describe('Home Navigation', () => {
   test.afterAll(async () => {
     await page.close();
   });
+
 });

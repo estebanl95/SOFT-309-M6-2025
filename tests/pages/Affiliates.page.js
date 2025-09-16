@@ -2,7 +2,7 @@ export class AffiliatesPage {
   constructor(page) {
     this.page = page;
     this.title = page.locator("div[id='content'] h1");
-    this.homePageLink = page.getByRole('link', { name: 'Qafox.com' });
+    this.homePageLink = page.locator('header a[href="https://tutorialsninja.com/demo/index.php?route=common/home"]');
   }
 
   static #instance;
