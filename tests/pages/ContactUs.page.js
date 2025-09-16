@@ -4,15 +4,16 @@ export class ContactUsPage {
    */
   constructor(page) {
     this.page = page;
-    this.title = page.locator('div[id="content"] h1');
     this.phoneLink = page.locator('.fa.fa-phone');
-    this.emailLink = page.locator('.fa.fa-envelope');
-    this.contactForm = page.locator('form#contact-form');
-    this.nameInput = page.locator('input[name="name"]');
-    this.emailInput = page.locator('input[name="email"]');
-    this.messageTextarea = page.locator('textarea[name="message"]');
-    this.submitButton = page.locator('button[type="submit"]');
+    this.nameInput = page.locator('#input-name');
+    this.emailInput = page.locator('#input-email');
+    this.enquiryInput = page.locator('#input-enquiry');
+    this.submitButton = page.locator('input[value="Submit"]');
     this.homePageLink = page.locator('header a[href="https://tutorialsninja.com/demo/index.php?route=common/home"]');
+    this.nameErrorMessage = page.locator('body > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > form:nth-child(4) > fieldset:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2)');
+    this.emailErrorMessage = page.locator('body > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > form:nth-child(4) > fieldset:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2)');
+    this.enquiryErrorMessage = page.locator('body > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > form:nth-child(4) > fieldset:nth-child(1) > div:nth-child(4) > div:nth-child(2) > div:nth-child(2)');
+
   }
 
   // Singleton implementation
@@ -30,30 +31,30 @@ export class ContactUsPage {
     return ContactUsPage.#instance;
   }
 
-  /**
-   * Resets the singleton instance (useful for test teardown)
-   */
-  static reset() {
-    ContactUsPage.#instance = null;
-  }
-
   async clickPhoneLink() {
     await this.phoneLink.waitFor({ state: 'visible' });
     await this.phoneLink.click();
   }
 
-  async clickEmailLink() {
-    await this.emailLink.waitFor({ state: 'visible' });
-    await this.emailLink.click();
+  async fillContactFormIncomplete(name, email, message) {
+    await this.nameInput.fill(name);
+    await this.emailInput.fill(email);
+    await this.enquiryInput.fill(message);
   }
 
   async fillContactForm(name, email, message) {
+    await this.nameInput.waitFor({ state: 'visible' });
     await this.nameInput.fill(name);
     await this.emailInput.fill(email);
-    await this.messageTextarea.fill(message);
+    await this.enquiryInput.fill(message);
   }
 
   async submitForm() {
     await this.submitButton.click();
   }
+
+  static reset() {
+    ContactUsPage.#instance = null;
+  }
+
 }   

@@ -18,7 +18,7 @@ test.describe('Wish List ', () => {
         HomePage.reset();
     });
 
-    test('test adding an item to the Wish List being logged out', async () => {
+    test('tests adding an item to the Wish List being logged out', async () => {
         await homePage.macBookWishListButton.waitFor({ state: 'visible' });
         await expect(homePage.wishListLink).toContainText('0');
         await homePage.addMacBookToWishList();
@@ -26,7 +26,7 @@ test.describe('Wish List ', () => {
         await expect(homePage.wishListLink).toContainText('1');
     });
 
-    test('test adding items to the Wish List and visiting the Wish List page being logged out', async () => {
+    test('tests adding items to the Wish List and visiting the Wish List page being logged out', async () => {
         await homePage.macBookWishListButton.waitFor({ state: 'visible' });
         await homePage.addMacBookToWishList();
         await expect(homePage.wishListAlert).toBeVisible();

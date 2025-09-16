@@ -145,7 +145,7 @@ test.describe('Home Page ', () => {
     MP3PlayerItemPage.reset();
   });
 
-  test('test the navigation of the header links', async () => {
+  test('tests the navigation of the header links', async () => {
     await homePage.clickPhoneLink();
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=information/contact");
     await contactUsPage.homePageLink.click();
@@ -173,7 +173,7 @@ test.describe('Home Page ', () => {
     await shoppingCartPage.homePageLink.click();
   });
 
-  test('the navigation of the footer links', async () => {
+  test('tests the navigation of the footer links', async () => {
     await homePage.clickAboutUsLink();
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=information/information&information_id=4");
     await aboutUsPage.homePageLink.click();
@@ -238,7 +238,7 @@ test.describe('Home Page ', () => {
     await loginPage.homePageLink.click();
   });
 
-  test('test the currency dropdown in the header', async () => {
+  test('tests the currency dropdown in the header', async () => {
     await homePage.selectPoundSterlingCurrency();
     await expect(homePage.currencySymbol).toHaveText("£");
     await expect(homePage.cartButton).toContainText("£");
@@ -255,7 +255,7 @@ test.describe('Home Page ', () => {
     console.log("US Dollar currency test passed - symbols match in dropdown and cart");
   });
 
-  test('test the functionality of the Navigation menu links', async() => {
+  test('tests the functionality of the Navigation menu links', async() => {
     await homePage.navigateToDesktopsPC();
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=20_26");
     await homePage.homePageLink.click();
