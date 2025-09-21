@@ -16,6 +16,9 @@ export class RegisterAccountPage {
     this.continueButton = page.locator("input[value='Continue']");
     this.privacyPolicyModalTitle = page.locator(".modal-title");
     this.closeModalButton = page.locator(".close");
+    this.privacyPolicyWarning = page.locator(".alert.alert-danger.alert-dismissible");
+    this.passwordMismatchWarning = page.locator(".text-danger");
+    this.emailAlreadyRegisteredWarning = page.locator(".alert.alert-danger.alert-dismissible");
   }
 
   static #instance;
@@ -27,6 +30,26 @@ export class RegisterAccountPage {
     }
     return RegisterAccountPage.#instance;
   }
+
+  async registerNewUser(firstName, lastName, email, telephone, password, confirmPassword) {
+    await this.continueButton.waitFor({ state: 'visible' });
+    await this.firstName.fill(firstName);
+    await this.lastName.fill(lastName);
+    await this.email.fill(email);
+    await this.telephone.fill(telephone);
+    await this.password.fill(password);
+    await this.confirmPassword.fill(confirmPassword);
+  }
+
+  async clickPrivacyPolicyLink() {
+    await this.privacyPolicyLink.click();
+  }
+
+  async closePrivacyPolicyModal() {
+    await this.closeModalButton.click();
+  }
+
+
 
   static reset() {
     RegisterAccountPage.#instance = null;
