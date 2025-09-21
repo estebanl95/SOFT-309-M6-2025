@@ -1,37 +1,37 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from './pages/Home.page';
-import { ContactUsPage } from './pages/ContactUs.page';
-import { RegisterAccountPage } from './pages/Register.page';
-import { LoginPage } from './pages/Login.page';
-import { ShoppingCartPage } from './pages/ShoppingCart.page';
-import { AboutUsPage } from './pages/AboutUs.page';
-import { DeliveryInformationPage } from './pages/DeliveryInformation.page';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicy.page';
-import { TermsConditionsPage } from './pages/TermsConditions.page';
-import { ReturnsPage } from './pages/Returns.page';
-import { SiteMapPage } from './pages/SiteMap.page';
-import { BrandsPage } from './pages/Brands.page';
-import { GiftCertificatePage } from './pages/GiftCertificate.page';
-import { AffiliatesPage } from './pages/Affiliates.page';
-import { SpecialsPage } from './pages/Specials.page';
-import { DesktopPage } from './pages/devicePages/Desktop.page'; 
-import { DesktopMacPage } from './pages/devicePages/DesktopMac.page';
-import { DesktopPCPage } from './pages/devicePages/DesktopPC.page';
-import { LaptopPage } from './pages/devicePages/Laptop.page';
-import { LaptopWindowsPage } from './pages/devicePages/LaptopWindows.page';
-import { LaptopMacPage } from './pages/devicePages/LaptopMac.page';
-import { ComponentsPage } from './pages/devicePages/Components.page';
-import { ComponentsMicePage } from './pages/devicePages/ComponentsMice.page';
-import { ComponentsMonitorPage } from './pages/devicePages/ComponentsMonitor.page';
-import { ComponentsPrinterPage } from './pages/devicePages/ComponentsPrinter.page';
-import { ComponentsScannerPage } from './pages/devicePages/ComponentsScanner.page';
-import { ComponentsWebCameraPage } from './pages/devicePages/ComponentsWebCamera.page';
-import { TabletsPage } from './pages/devicePages/Tablets.page';
-import { SoftwarePage } from './pages/devicePages/Software.page';
-import { PhonesPage } from './pages/devicePages/Phones.page';
-import { CamerasPage } from './pages/devicePages/Cameras.page';
-import { MP3PlayerPage } from './pages/devicePages/MP3Player.page';
-import { MP3PlayerItemPage } from './pages/devicePages/MP3PlayerItem.page';
+import { HomePage } from '../pages/Home.page';
+import { ContactUsPage } from '../pages/ContactUs.page';
+import { RegisterAccountPage } from '../pages/Register.page';
+import { LoginPage } from '../pages/Login.page';
+import { ShoppingCartPage } from '../pages/ShoppingCart.page';
+import { AboutUsPage } from '../pages/AboutUs.page';
+import { DeliveryInformationPage } from '../pages/DeliveryInformation.page';
+import { PrivacyPolicyPage } from '../pages/PrivacyPolicy.page';
+import { TermsConditionsPage } from '../pages/TermsConditions.page';
+import { ReturnsPage } from '../pages/Returns.page';
+import { SiteMapPage } from '../pages/SiteMap.page';
+import { BrandsPage } from '../pages/Brands.page';
+import { GiftCertificatePage } from '../pages/GiftCertificate.page';
+import { AffiliatesPage } from '../pages/Affiliates.page';
+import { SpecialsPage } from '../pages/Specials.page';
+import { DesktopPage } from '../pages/devicePages/Desktop.page'; 
+import { DesktopMacPage } from '../pages/devicePages/DesktopMac.page';
+import { DesktopPCPage } from '../pages/devicePages/DesktopPC.page';
+import { LaptopPage } from '../pages/devicePages/Laptop.page';
+import { LaptopWindowsPage } from '../pages/devicePages/LaptopWindows.page';
+import { LaptopMacPage } from '../pages/devicePages/LaptopMac.page';
+import { ComponentsPage } from '../pages/devicePages/Components.page';
+import { ComponentsMicePage } from '../pages/devicePages/ComponentsMice.page';
+import { ComponentsMonitorPage } from '../pages/devicePages/ComponentsMonitor.page';
+import { ComponentsPrinterPage } from '../pages/devicePages/ComponentsPrinter.page';
+import { ComponentsScannerPage } from '../pages/devicePages/ComponentsScanner.page';
+import { ComponentsWebCameraPage } from '../pages/devicePages/ComponentsWebCamera.page';
+import { TabletsPage } from '../pages/devicePages/Tablets.page';
+import { SoftwarePage } from '../pages/devicePages/Software.page';
+import { PhonesPage } from '../pages/devicePages/Phones.page';
+import { CamerasPage } from '../pages/devicePages/Cameras.page';
+import { MP3PlayerPage } from '../pages/devicePages/MP3Player.page';
+import { MP3PlayerItemPage } from '../pages/devicePages/MP3PlayerItem.page';
 
 let page;
 let homePage;
@@ -146,6 +146,7 @@ test.describe('Home Page ', () => {
   });
 
   test('tests the navigation of the header links', async () => {
+    await homePage.phoneLink.waitFor({ state: 'visible' });
     await homePage.clickPhoneLink();
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=information/contact");
     await contactUsPage.homePageLink.click();
@@ -174,6 +175,7 @@ test.describe('Home Page ', () => {
   });
 
   test('tests the navigation of the footer links', async () => {
+    await homePage.aboutUsLink.waitFor({ state: 'visible' });
     await homePage.clickAboutUsLink();
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=information/information&information_id=4");
     await aboutUsPage.homePageLink.click();
@@ -239,6 +241,7 @@ test.describe('Home Page ', () => {
   });
 
   test('tests the currency dropdown in the header', async () => {
+    await homePage.currencyDropdown.waitFor({ state: 'visible' });
     await homePage.selectPoundSterlingCurrency();
     await expect(homePage.currencySymbol).toHaveText("£");
     await expect(homePage.cartButton).toContainText("£");
@@ -256,6 +259,7 @@ test.describe('Home Page ', () => {
   });
 
   test('tests the functionality of the Navigation menu links', async() => {
+    await homePage.desktopsMenuItem.waitFor({ state: 'visible' });
     await homePage.navigateToDesktopsPC();
     await expect(page).toHaveURL("https://tutorialsninja.com/demo/index.php?route=product/category&path=20_26");
     await homePage.homePageLink.click();

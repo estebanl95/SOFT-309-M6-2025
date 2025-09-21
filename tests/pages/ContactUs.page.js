@@ -37,6 +37,7 @@ export class ContactUsPage {
   }
 
   async fillContactFormIncomplete(name, email, message) {
+    await this.nameInput.waitFor({ state: 'visible' });
     await this.nameInput.fill(name);
     await this.emailInput.fill(email);
     await this.enquiryInput.fill(message);
@@ -50,6 +51,7 @@ export class ContactUsPage {
   }
 
   async submitForm() {
+    await this.submitButton.waitFor({ state: 'visible' });
     await this.submitButton.click();
   }
 

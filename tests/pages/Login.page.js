@@ -20,10 +20,12 @@ export class LoginPage {
   }
 
   async submitLoginwithBlankCredentials() {
+    await this.loginButton.waitFor({ state: 'visible' });
     await this.loginButton.click();
   }
 
   async submitIncorrectLogin(email, password) {
+    await this.loginButton.waitFor({ state: 'visible' });
     await this.inputEmailAddress.fill(email);
     await this.inputPassword.fill(password);
     await this.loginButton.click();

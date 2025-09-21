@@ -194,16 +194,19 @@ export class HomePage {
 
   // Currency Dropdown
   async selectEuroCurrency() {
+    await this.currencyDropdown.waitFor({ state: 'visible' });
     await this.currencyDropdown.click();
     await this.euroCurrency.click();
   }
 
   async selectPoundSterlingCurrency() {
+    await this.currencyDropdown.waitFor({ state: 'visible' });
     await this.currencyDropdown.click();
     await this.poundSterlingCurrency.click();
   }
 
   async selectUsDollarCurrency() {
+    await this.currencyDropdown.waitFor({ state: 'visible' });
     await this.currencyDropdown.click();
     await this.usDollarCurrency.click();
   }
@@ -231,86 +234,104 @@ export class HomePage {
 
   // Navigation through the top menu
   async navigateToDesktopsPC() {
+    await this.desktopsMenuItem.waitFor({ state: 'visible' });
     await this.desktopsMenuItem.hover();
     await this.pcMenuOption.click();
   }
 
   async navigateToDesktopsMac() {
+    await this.desktopsMenuItem.waitFor({ state: 'visible' });
     await this.desktopsMenuItem.hover();
     await this.macMenuOption.click();
   }
 
   async navigateToAllDesktops() {
+    await this.desktopsMenuItem.waitFor({ state: 'visible' });
     await this.desktopsMenuItem.hover();
     await this.showAllDesktops.click();
   }
 
   async navigateToLaptopsMacs() {
+    await this.laptopsMenuItem.waitFor({ state: 'visible' });
     await this.laptopsMenuItem.hover();
     await this.macsOption.click();
   }
 
   async navigateToLaptopsWindows() {
+    await this.laptopsMenuItem.waitFor({ state: 'visible' });
     await this.laptopsMenuItem.hover();
     await this.windowsOption.click();
   }
 
   async navigateToAllLaptops() {
+    await this.laptopsMenuItem.waitFor({ state: 'visible' });
     await this.laptopsMenuItem.hover();
     await this.showAllLaptops.click();
   }
   
   async navigateToComponentsMiceAndTrackballs() {
+    await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.miceAndTrackballsOption.click();
   }   
 
   async navigateToComponentsMonitors() {
+    await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.monitorsOption.click();
   }
   
   async navigateToComponentsPrinters() {
+    await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.printersOption.click();
   } 
 
   async navigateToComponentsScanners() {
+    await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.scannersOption.click();
   }
   async navigateToComponentsWebCameras() {
+    await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.webCamerasOption.click();
   } 
 
-  async navigateToAllComponents() {
+  async navigateToAllComponents() { 
+    await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.showAllComponents.click();
   }
 
   async navigateToTablets() {
+    await this.tabletsMenuItem.waitFor({ state: 'visible' });
     await this.tabletsMenuItem.click();
   }
 
   async navigateToSoftware() {
+    await this.softwareMenuItem.waitFor({ state: 'visible' });
     await this.softwareMenuItem.click();
   }
 
   async navigateToPhones() {
+    await this.phonesMenuItem.waitFor({ state: 'visible' });
     await this.phonesMenuItem.click();
   }
 
   async navigateToCameras() {
+    await this.camerasMenuItem.waitFor({ state: 'visible' });
     await this.camerasMenuItem.click();
   }
 
   async navigateToMP3PlayersOption11() {
+    await this.mp3PlayersMenuItem.waitFor({ state: 'visible' });
     await this.mp3PlayersMenuItem.hover();
     await this.mp3PlayerOption11.click();
   }
 
   async navigateToAllMP3Players() {
+    await this.mp3PlayersMenuItem.waitFor({ state: 'visible' });
     await this.mp3PlayersMenuItem.hover();
     await this.showAllMP3Players.click();
   }
