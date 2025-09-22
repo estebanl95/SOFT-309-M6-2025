@@ -66,6 +66,12 @@ export class HomePage {
     this.mp3PlayerOption11 = page.locator('a[href="https://tutorialsninja.com/demo/index.php?route=product/category&path=34_43"]');
     this.showAllMP3Players = page.getByRole('link', { name: 'Show AllMP3 Players' });
 
+    this.myAccountOption = page.locator('li[class="dropdown open"] li:nth-child(1) a:nth-child(1)');
+    this.orderHistoryOption = page.locator('li[class="dropdown open"] li:nth-child(2) a:nth-child(1)');
+    this.transactionsOption = page.locator('a[href="https://tutorialsninja.com/demo/index.php?route=account/transaction"]');
+    this.downloadsOption = page.locator('a[href="https://tutorialsninja.com/demo/index.php?route=account/download"]');
+    this.logoutOption = page.locator('a[href="https://tutorialsninja.com/demo/index.php?route=account/logout"]');
+
   }
 
   // Singleton implementation
@@ -268,24 +274,24 @@ export class HomePage {
     await this.laptopsMenuItem.hover();
     await this.showAllLaptops.click();
   }
-  
+
   async navigateToComponentsMiceAndTrackballs() {
     await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.miceAndTrackballsOption.click();
-  }   
+  }
 
   async navigateToComponentsMonitors() {
     await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.monitorsOption.click();
   }
-  
+
   async navigateToComponentsPrinters() {
     await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.printersOption.click();
-  } 
+  }
 
   async navigateToComponentsScanners() {
     await this.componentsMenuItem.waitFor({ state: 'visible' });
@@ -296,9 +302,9 @@ export class HomePage {
     await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.webCamerasOption.click();
-  } 
+  }
 
-  async navigateToAllComponents() { 
+  async navigateToAllComponents() {
     await this.componentsMenuItem.waitFor({ state: 'visible' });
     await this.componentsMenuItem.hover();
     await this.showAllComponents.click();

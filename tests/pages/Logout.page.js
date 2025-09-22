@@ -1,7 +1,7 @@
 export class LogoutPage {
     constructor(page) {
         this.page = page;
-        this.accountLogoutTitle = page.locator('div[id="content"] h1');
+        this.logoutTitle = page.locator('div[id="content"] h1');
         this.continueButton = page.locator('.btn.btn-primary');
     }
 

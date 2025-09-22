@@ -31,6 +31,13 @@ export class LoginPage {
     await this.loginButton.click();
   }
 
+  async submitLogin(email, password) {
+    await this.loginButton.waitFor({ state: 'visible' });
+    await this.inputEmailAddress.fill(email);
+    await this.inputPassword.fill(password);
+    await this.loginButton.click();
+  }
+
 
 
 
