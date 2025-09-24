@@ -5,3 +5,22 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Screenshots - Generated during test execution, not needed in version control
+/screenshots/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

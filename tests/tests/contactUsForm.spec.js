@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/Home.page';
 import { ContactUsPage } from '../pages/ContactUs.page';
+import { captureTestMoment } from '../utils/screenshotUtils.js';
 import * as dotenv from 'dotenv';
 
 dotenv.config({ path: '.creds.env' });
@@ -26,8 +27,10 @@ test.describe('Contact Us ', () => {
 
     test('tests the functionality of submitting a blank form', async () => {
         await contactUsPage.submitButton.waitFor({ state: 'visible' });
+        await captureTestMoment(page, 'contact-tests', '01-blank-form');
         await contactUsPage.submitForm();
         await expect(contactUsPage.nameErrorMessage).toBeVisible();
+        await captureTestMoment(page, 'contact-tests', '02-blank-form-errors');
         await expect(contactUsPage.emailErrorMessage).toBeVisible();
         await expect(contactUsPage.enquiryErrorMessage).toBeVisible();
     });

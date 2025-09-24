@@ -6,6 +6,7 @@ import { OrderHistoryPage } from '../pages/OrderHistory.page';
 import { TransactionsPage } from '../pages/Transactions.page';
 import { AccountDownloadsPage } from '../pages/AccountDownloads.page';
 import { LogoutPage } from '../pages/Logout.page';
+import { captureTestMoment } from '../utils/screenshotUtils.js';
 
 import * as dotenv from 'dotenv';
 
@@ -45,25 +46,31 @@ test.describe('Login ', () => {
 
     test('tests the functionality of submitting blank credentials', async () => {
         await loginPage.loginButton.waitFor({ state: 'visible' });
+        await captureTestMoment(page, 'login-tests', '01-before-blank-submission');
         await loginPage.submitLoginwithBlankCredentials();
         await expect(loginPage.warningMessage).toBeVisible();
+        await captureTestMoment(page, 'login-tests', '02-blank-credentials-error');
     });
 
     test('tests the functionality of submitting incorrect credentials', async () => {
         const email = process.env.INVALID_EMAIL_LOGIN;
         const password = process.env.INVALID_PASSWORD_LOGIN;
         await loginPage.loginButton.waitFor({ state: 'visible' });
+        await captureTestMoment(page, 'login-tests', '03-before-incorrect-submission');
         await loginPage.submitIncorrectLogin(email, password);
         await expect(loginPage.warningMessage).toBeVisible();
+        await captureTestMoment(page, 'login-tests', '04-incorrect-credentials-error');
     });
 
     test('tests the functionality of submitting valid username and password', async () => {
         const email = process.env.LOGIN_EMAIL;
         const password = process.env.LOGIN_PASSWORD;
         await loginPage.loginButton.waitFor({ state: 'visible' });
+        await captureTestMoment(page, 'login-tests', '05-before-valid-submission');
         await loginPage.submitLogin(email, password);
         await expect(page).toHaveURL('https://tutorialsninja.com/demo/index.php?route=account/account');
         await expect(myAccountPage.myAccountTitle).toHaveText('My Account');
+        await captureTestMoment(page, 'login-tests', '06-successful-login-my-account');
     });
 
     test('tests the My Account dropdown menu options visibility', async () => {

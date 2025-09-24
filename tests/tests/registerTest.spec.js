@@ -3,6 +3,7 @@ import { HomePage } from '../pages/Home.page';
 import { RegisterAccountPage } from '../pages/Register.page';
 import { AccountCreatedPage } from '../pages/AccountCreated.page';
 import { MyAccountPage } from '../pages/MyAccount.page';
+import { captureTestMoment } from '../utils/screenshotUtils.js';
 import * as dotenv from 'dotenv';
 
 dotenv.config({ path: '.creds.env' });
@@ -41,11 +42,14 @@ test.describe('Register ', () => {
         const confirmPassword = process.env.CONFIRM_INVALID_PASSWORD;
 
         await registerPage.continueButton.waitFor({ state: 'visible' });
+        await captureTestMoment(page, 'register-tests', '01-before-invalid-registration');
         await registerPage.registerNewUser(firstName, lastName, email, telephone, password, confirmPassword);
         await registerPage.subscribeNo.click();
+        await captureTestMoment(page, 'register-tests', '02-invalid-form-filled');
         await registerPage.continueButton.click();
         await expect(registerPage.privacyPolicyWarning).toHaveText('Warning: You must agree to the Privacy Policy!');
         await expect(registerPage.passwordMismatchWarning).toHaveText('Password confirmation does not match password!');
+        await captureTestMoment(page, 'register-tests', '03-invalid-registration-errors');
     });
 
     test('tests the functionality of a valid user registration without checking the Privacy Policy checkbox', async () => {

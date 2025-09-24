@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/Home.page';
+import { captureTestMoment } from '../utils/screenshotUtils.js';
 
 let page;
 let homePage;
@@ -19,10 +20,12 @@ test.describe('Wish List ', () => {
 
     test('tests adding an item to the Wish List being logged out', async () => {
         await homePage.macBookWishListButton.waitFor({ state: 'visible' });
+        await captureTestMoment(page, 'wishlist-loggedout-tests', '01-before-adding-item');
         await expect(homePage.wishListLink).toContainText('0');
         await homePage.addMacBookToWishList();
         await expect(homePage.wishListAlert).toBeVisible();
         await expect(homePage.wishListLink).toContainText('1');
+        await captureTestMoment(page, 'wishlist-loggedout-tests', '02-after-adding-item');
     });
 
     test('tests adding items to the Wish List and visiting the Wish List page being logged out', async () => {

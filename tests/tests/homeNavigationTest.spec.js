@@ -32,6 +32,7 @@ import { PhonesPage } from '../pages/devicePages/Phones.page';
 import { CamerasPage } from '../pages/devicePages/Cameras.page';
 import { MP3PlayerPage } from '../pages/devicePages/MP3Player.page';
 import { MP3PlayerItemPage } from '../pages/devicePages/MP3PlayerItem.page';
+import { captureTestMoment } from '../utils/screenshotUtils.js';
 
 let page;
 let homePage;
