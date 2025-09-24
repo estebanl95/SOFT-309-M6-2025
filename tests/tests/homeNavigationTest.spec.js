@@ -68,7 +68,7 @@ let software;
 let phonePDA;
 let cameras;
 
-test.describe('Home Page ', () => {
+test.describe('Home ', () => {
   test.beforeAll(async ({ browser }) => {
     const context = await browser.newContext();
     page = await context.newPage();

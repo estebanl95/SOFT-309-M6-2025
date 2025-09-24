@@ -20,7 +20,7 @@ let transactionsPage;
 let accountDownloadsPage;
 let logoutPage;
 
-test.describe('Login Page ', () => {
+test.describe('Login ', () => {
     test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();

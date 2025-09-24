@@ -13,7 +13,7 @@ let registerPage;
 let accountCreatedPage;
 let myAccountPage;
 
-test.describe('Register Page ', () => {
+test.describe('Register ', () => {
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
