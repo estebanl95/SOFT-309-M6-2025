@@ -43,8 +43,6 @@ test.describe('Logged Wish List ', () => {
 
         await loginPage.loginButton.waitFor({ state: 'visible' });
         await loginPage.submitLogin(email, password);
-        
-        // Screenshot after successful login
         await page.screenshot({ 
             path: getScreenshotPath('wishlist-add-test', '01-after-login'),
             fullPage: true 
@@ -53,29 +51,21 @@ test.describe('Logged Wish List ', () => {
         await myAccountPage.homePageLink.click();
         await homePage.addMacBookToWishList();
         await expect(homePage.wishListAlert).toBeVisible();
-        
-        // Screenshot after adding item to wishlist
         await page.screenshot({ 
             path: getScreenshotPath('wishlist-add-test', '02-item-added-to-wishlist'),
             fullPage: true 
         });
         
         await expect(homePage.wishListLink).toContainText(/\d+/);
-        
-        // Wait a bit for the item to be properly added to the wishlist
         await page.waitForTimeout(1000);
         
         await homePage.wishListLink.click();
         await wishListPage.wishListTitle.waitFor({ state: 'visible' });
         await expect(wishListPage.wishListTitle).toHaveText('My Wish List');
-        
-        // Screenshot of the wishlist page
         await page.screenshot({ 
             path: getScreenshotPath('wishlist-add-test', '03-wishlist-page-view'),
             fullPage: true 
         });
-        
-        // Check that MacBook is in the wishlist with retry logic
         let isItemVisible = false;
         let retryCount = 0;
         while (!isItemVisible && retryCount < 3) {
@@ -100,15 +90,11 @@ test.describe('Logged Wish List ', () => {
         await homePage.addMacBookToWishList();
         await expect(homePage.wishListAlert).toBeVisible();
         await expect(homePage.wishListLink).toContainText(/\d+/);
-        
-        // Wait a bit for the item to be properly added to the wishlist
         await page.waitForTimeout(1000);
         
         await homePage.wishListLink.click();
         await wishListPage.wishListTitle.waitFor({ state: 'visible' });
         await expect(wishListPage.wishListTitle).toHaveText('My Wish List');
-        
-        // Wait for the MacBook to appear in the wishlist with retry logic
         let isItemVisible = false;
         let retryCount = 0;
         while (!isItemVisible && retryCount < 3) {
@@ -122,19 +108,12 @@ test.describe('Logged Wish List ', () => {
         }
         expect(isItemVisible).toBe(true);
         
-        // Screenshot before removing item
         await page.screenshot({ 
             path: getScreenshotPath('wishlist-remove-test', '04-before-removing-item'),
             fullPage: true 
         });
-        
-        // Remove the item
         await wishListPage.removeItemfromWishList('MacBook');
-        
-        // Wait for removal to complete
         await page.waitForTimeout(1000);
-        
-        // Screenshot after removing item
         await page.screenshot({ 
             path: getScreenshotPath('wishlist-remove-test', '05-after-removing-item'),
             fullPage: true 
