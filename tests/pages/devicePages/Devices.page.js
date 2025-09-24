@@ -1,4 +1,4 @@
-export class ComponentsPrinterPage {
+export class DevicesPage {
     constructor(page) {
         this.page = page;
         this.homePageLink = page.getByRole('header a', { name: 'Qafox.com' });
@@ -7,14 +7,14 @@ export class ComponentsPrinterPage {
     static #instance;
 
     static getInstance(page) {
-        if (!ComponentsPrinterPage.#instance || ComponentsPrinterPage.#instance.page !== page) {
+        if (!DevicesPage.#instance || DevicesPage.#instance.page !== page) {
             // Creates a new instance if it doesn't exist or if it's a different page
-            ComponentsPrinterPage.#instance = new ComponentsPrinterPage(page);
+            DevicesPage.#instance = new DevicesPage(page);
         }
-        return ComponentsPrinterPage.#instance;
+        return DevicesPage.#instance;
     }
 
     static reset() {
-        ComponentsPrinterPage.#instance = null;
+        DevicesPage.#instance = null;
     }
 }

@@ -15,23 +15,7 @@ import { GiftCertificatePage } from '../pages/GiftCertificate.page';
 import { AffiliatesPage } from '../pages/Affiliates.page';
 import { SpecialsPage } from '../pages/Specials.page';
 import { DesktopPage } from '../pages/devicePages/Desktop.page'; 
-import { DesktopMacPage } from '../pages/devicePages/DesktopMac.page';
-import { DesktopPCPage } from '../pages/devicePages/DesktopPC.page';
-import { LaptopPage } from '../pages/devicePages/Laptop.page';
-import { LaptopWindowsPage } from '../pages/devicePages/LaptopWindows.page';
-import { LaptopMacPage } from '../pages/devicePages/LaptopMac.page';
-import { ComponentsPage } from '../pages/devicePages/Components.page';
-import { ComponentsMicePage } from '../pages/devicePages/ComponentsMice.page';
-import { ComponentsMonitorPage } from '../pages/devicePages/ComponentsMonitor.page';
-import { ComponentsPrinterPage } from '../pages/devicePages/ComponentsPrinter.page';
-import { ComponentsScannerPage } from '../pages/devicePages/ComponentsScanner.page';
-import { ComponentsWebCameraPage } from '../pages/devicePages/ComponentsWebCamera.page';
-import { TabletsPage } from '../pages/devicePages/Tablets.page';
-import { SoftwarePage } from '../pages/devicePages/Software.page';
-import { PhonesPage } from '../pages/devicePages/Phones.page';
-import { CamerasPage } from '../pages/devicePages/Cameras.page';
-import { MP3PlayerPage } from '../pages/devicePages/MP3Player.page';
-import { MP3PlayerItemPage } from '../pages/devicePages/MP3PlayerItem.page';
+import { DevicesPage } from '../pages/devicePages/Devices.page';
 import { captureTestMoment } from '../utils/screenshotUtils.js';
 
 let page;
@@ -50,24 +34,8 @@ let brandsPage;
 let giftCertificatePage;
 let affiliatesPage;
 let specialsPage;
-let mp3PlayerItemPage;
-let mp3PlayerPage;
 let desktops;
-let desktopMac;
-let desktopPC;
-let laptops;
-let laptopMac;
-let laptopWindows;
-let components;
-let componentsMice;
-let componentsMonitor;
-let componentsPrinter;
-let componentsScanner;
-let componentsWebCamera;
-let tablets;
-let software;
-let phonePDA;
-let cameras;
+let devices;
 
 test.describe('Home ', () => {
   test.beforeAll(async ({ browser }) => {
@@ -90,23 +58,7 @@ test.describe('Home ', () => {
     affiliatesPage = AffiliatesPage.getInstance(page);
     specialsPage = SpecialsPage.getInstance(page);
     desktops = DesktopPage.getInstance(page);
-    desktopMac = DesktopMacPage.getInstance(page);
-    desktopPC = DesktopPCPage.getInstance(page);
-    laptops = LaptopPage.getInstance(page);
-    laptopMac = LaptopMacPage.getInstance(page);
-    laptopWindows = LaptopWindowsPage.getInstance(page);
-    components = ComponentsPage.getInstance(page);
-    componentsMice = ComponentsMicePage.getInstance(page);
-    componentsMonitor = ComponentsMonitorPage.getInstance(page);
-    componentsPrinter = ComponentsPrinterPage.getInstance(page);
-    componentsScanner = ComponentsScannerPage.getInstance(page);
-    componentsWebCamera = ComponentsWebCameraPage.getInstance(page);
-    tablets = TabletsPage.getInstance(page);
-    software = SoftwarePage.getInstance(page);
-    phonePDA = PhonesPage.getInstance(page);
-    cameras = CamerasPage.getInstance(page);
-    mp3PlayerPage = MP3PlayerPage.getInstance(page);
-    mp3PlayerItemPage = MP3PlayerItemPage.getInstance(page);
+    devices = DevicesPage.getInstance(page);
   });
 
   test.beforeEach(async () => {
@@ -127,23 +79,7 @@ test.describe('Home ', () => {
     AffiliatesPage.reset();
     SpecialsPage.reset();
     DesktopPage.reset();
-    DesktopMacPage.reset();
-    DesktopPCPage.reset();
-    LaptopPage.reset();
-    LaptopMacPage.reset();
-    LaptopWindowsPage.reset();
-    ComponentsPage.reset();
-    ComponentsMicePage.reset();
-    ComponentsMonitorPage.reset();
-    ComponentsPrinterPage.reset();
-    ComponentsScannerPage.reset();
-    ComponentsWebCameraPage.reset();
-    TabletsPage.reset();
-    SoftwarePage.reset();
-    PhonesPage.reset();
-    CamerasPage.reset();
-    MP3PlayerPage.reset();
-    MP3PlayerItemPage.reset();
+    DevicesPage.reset();
   });
 
   test('tests the navigation of the header links', async () => {
